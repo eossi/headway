@@ -1,0 +1,41 @@
+int previousValue = 1;
+int previousValue4 = 1;
+int previousValue6 = 1;
+int previousValue8 = 1;
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(2, INPUT_PULLUP);
+  pinMode(4, INPUT_PULLUP);
+  pinMode(6, INPUT_PULLUP);
+  pinMode(8, INPUT_PULLUP);
+  
+  Serial.begin(9600);
+  Keyboard.begin();
+}
+  
+void loop() {
+                                            
+  int value = digitalRead(2);
+  if (value==0)  Keyboard.write(KEY_LEFT_ARROW);
+  delay(100); 
+  if (value == 0 && previousValue == 1) Keyboard.press(KEY_LEFT_ARROW);
+  if (value == 1 && previousValue == 0) Keyboard.release (KEY_LEFT_ARROW);
+  previousValue = value;
+
+  
+  value = digitalRead(4);
+  if (value == 0 && previousValue4 == 1) Keyboard.press(KEY_RIGHT_ARROW);
+  if (value == 1 && previousValue4 == 0) Keyboard.release (KEY_RIGHT_ARROW);
+  previousValue4 = value;
+  
+  value = digitalRead(6);
+  if (value == 0 && previousValue6 == 1) Keyboard.press(KEY_UP_ARROW);
+  if (value == 1 && previousValue6 == 0) Keyboard.release (KEY_UP_ARROW);
+  previousValue6 = value;
+  
+  value = digitalRead(8);
+  if (value == 0 && previousValue8 == 1) Keyboard.press(KEY_DOWN_ARROW);
+  if (value == 1 && previousValue8 == 0) Keyboard.release (KEY_DOWN_ARROW);
+  previousValue8 = value;
+}
