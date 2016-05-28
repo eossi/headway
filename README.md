@@ -1,4 +1,4 @@
 # headway
-Headway Game Controller / Arduino Leonardo
+headband controller programmed using arduino leonardo.
 
-Arduino code to be used with one-click button controller.
+code to be used with one-click button controller.
